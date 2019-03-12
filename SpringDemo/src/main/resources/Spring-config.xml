@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <!--Beans For Question1AndQuestion2-->
+    <bean id="database" class="Question1AndQuestion2.Database">
+        <constructor-arg index="0" value="100"/>
+        <constructor-arg index="1" value="rishabh" type="java.lang.String"/>
+    </bean>
+    <bean id="database2" class="Question1AndQuestion2.Database">
+        <property name="name" value="ram"/>
+        <property name="port" value="20"/>
+    </bean>
+
+
+    <!--Beans For Question3AndQuestion4-->
+
+    <bean name="teaRestaurant1" class="Question3AndQuestion4.Restaurant">
+        <property name="hotdrink" ref="tea"></property>
+    </bean>
+
+    <bean name="ExpressRestaurant" class="Question3AndQuestion4.Restaurant">
+        <property name="hotdrink">
+            <bean name="expressTea" class="Question3AndQuestion4.ExpressTea"/>
+        </property>
+    </bean>
+    <bean name="tea" class="Question3AndQuestion4.Tea"/>
+
+    <!--<bean id="hotdrink" class="Question3AndQuestion4.ExpressTea"/>-->
+
+
+    <!--Question 6 Example through bean-->
+
+    <bean name="teaRestaurant2" class="Question6.Restaurant" autowire="constructor"/>
+
+
+    <bean id="hotdrink1" class="Question6.ExpressTea"/>
+
+
+    <!--<bean name="teaRestaurant2" class="Question6.Restaurant" autowire="byName" />
+
+
+    <bean id="hotdrink1" class="Question6.ExpressTea"/>-->
+
+
+    <!--<bean name="teaRestaurant2" class="Question6.Restaurant" autowire="byType" />
+
+
+    <bean id="hotdrink1" class="Question6.ExpressTea"/>-->
+
+
+    <!--Beans for Question7-->
+    <bean name="teaRestaurant" class="Question3AndQuestion4.Tea">
+
+    </bean>
+    <bean name="teaRestaurantPrototype" class="Question3AndQuestion4.Tea" scope="prototype">
+
+    </bean>
+
+
+    <!--Beans for Question8-->
+    <!--<bean name="Restaurant" class="Question3AndQuestion4.Restaurant">
+
+
+    </bean>-->
+    <!--This is showing the error as we have not set the property because it is required-->
+
+
+    <!--Beans for Question9-->
+
+
+    <bean name="teaRestaurant3" class="Question9.Restaurant"/>
+
+
+    <bean id="hotDrink2" class="Question9.ExpressTea"/>
+
+
+    <!--Beans For Question5-->
+    <bean name="complex" class="Question5.Complex">
+        <property name="list">
+            <list>
+                <value type="java.lang.String">Rishabh</value>
+                <value type="java.lang.String">Ram</value>
+                <value type="java.lang.String">mohan</value>
+                <value type="java.lang.String">Rishabh</value>
+            </list>
+        </property>
+        <property name="set">
+            <set>
+                <value type="java.lang.String">Rishabh</value>
+                <value type="java.lang.String">Ram</value>
+                <value type="java.lang.String">mohan</value>
+                <value type="java.lang.String">Rishabh</value>
+            </set>
+        </property>
+        <property name="map">
+            <map>
+                <entry key="1" value="rishabh" value-type="java.lang.String"/>
+                <entry key="2" value="mohan" value-type="java.lang.String"/>
+            </map>
+        </property>
+
+    </bean>
+    <context:annotation-config></context:annotation-config>
+
+</beans>
