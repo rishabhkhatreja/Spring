@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+    <aop:aspectj-autoproxy/>
+
+
+    <bean id="database" class="Question2AndQuestion3.Database">
+        <property name="name" value="jdbc"></property>
+        <property name="port" value="101"></property>
+    </bean>
+
+    <bean id="databaseQuestion1" class="Question1.Database">
+        <property name="name" value="jdbc"></property>
+        <property name="port" value="101"></property>
+    </bean>
+    <bean class="Question2AndQuestion3.MyEventListener"/>
+
+
+<!--
+    <bean class="Question4.AspectLogging"/>
+    <bean id="serviceQuestion4" class="Question4.Service"/>
+-->
+
+
+<!--
+    <bean class="Question5.AspectLogging"/>
+    <bean id="serviceQuestion5" class="Question5.Service"/>
+-->
+
+
+<!--
+    <bean class="Question6.AspectLogging"/>
+    <bean id="serviceQuestion6" class="Question6.Service"/>
+-->
+
+
+
+
+<!--
+    <bean class="Question7.AspectLogging"/>
+    <bean id="serviceQuestion7" class="Question7.Service"/>
+-->
+
+
+
+<!--
+    <bean class="Question8.AspectLogging"/>
+    <bean id="serviceQuestion8" class="Question8.Service"/>
+
+-->
+
+
+
+
+<!--
+    <bean class="Question9.AspectLogging"/>
+     <bean id="serviceQuestion9" class="Question9.Service"/>
+-->
+
+</beans>
