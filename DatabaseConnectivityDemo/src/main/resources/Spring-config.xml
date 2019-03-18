@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="url" value="jdbc:mysql://localhost:3306/springDemo"/>
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="username" value="root"/>
+        <property name="password" value=""/>
+    </bean>
+
+    <bean class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="packagesToScan" value="Question10"/>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="dialect">org.hibernate.dialect.MySQLDialect</prop>
+            </props>
+        </property>
+    </bean>
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+
+    <tx:annotation-driven proxy-target-class="true" transaction-manager="txManager"/>
+
+    <bean id="user" class="Question3.UserDAO"/>
+    <bean id="count" class="Question4.CountUser"/>
+    <bean id="getUser" class="Question5.GetUser"/>
+    <bean id="insert" class="Question6.InsertRecord"/>
+    <bean id="insertList" class="Question8.UserDetailList"/>
+    <bean id="UserMapper" class="Question9.UserDetails"/>
+    <bean class="Question7.UserDetailMap"/>
+    <bean id="UserDAO" class="Question10.UserDAO"/>
+    <bean id="InsertUser" class="Question11.RequiresNew.InsertRecord"/>
+    <bean id="InsertUserMandatory" class="Question11.Mandatory.InsertRecord"/>
+    <bean class="Question11.Mandatory.InsertRecord2"/>
+    <bean id="InsertUserNever" class="Question11.Never.InsertRecord"/>
+    <bean class="Question11.Never.InsertRecord2"/>
+    <bean id="InsertUserNested" class="Question11.Nested.InsertRecord"/>
+    <bean class="Question11.Nested.InsertRecord2"/>
+    <bean id="InsertUserSupport" class="Question11.Supports.InsertRecord"/>
+    <bean class="Question11.Supports.InsertRecord2"/>
+    <bean id="InsertUserNotSupported" class="Question11.NotSupported.InsertRecord"/>
+    <bean class="Question11.NotSupported.InsertRecord2"/>
+    <bean id="InsertUserReadOnly" class="Question12.ReadOnly.InsertRecord"/>
+    <bean id="InsertUserTimeOut" class="Question12.Timeout.InsertRecord"/>
+    <bean id="InsertUserRollBack" class="Question12.RollBackFor.InsertRecord"/>
+    <bean id="InsertUserNoRollBack" class="Question12.NoRollBackFor.InsertRecord"/>
+
+    <bean class="Question11.RequiresNew.InsertRecord2"/>
+
+    <context:component-scan base-package="Question11"/>
+    <context:annotation-config/>
+</beans>
