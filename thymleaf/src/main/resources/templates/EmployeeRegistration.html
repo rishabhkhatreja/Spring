@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script
+            src="http://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous"></script>
+</head>
+<script>
+    $(document).ready(function() {
+        console.log("hello");
+        $("body").prepend('<div id="overlay" class="ui-widget-overlay" style="z-index: 1001; display: none;"></div>');
+        $("body").prepend("<div id='PleaseWait' style='display: none;'><img src='../images/spinner.gif'/></div>");
+    });
+
+    $(document).on('click','#form', function(e){
+        console.log("formsubmit");
+        $("#overlay, #PleaseWait").show();
+    });
+</script>
+<body>
+<form  th:action="@{/dummy}" th:object="${employee}" method="post" >
+    Enter Name:
+    <input th:type="text" th:name="name">
+    Enter Email:
+    <input th:type="email" th:name="email">
+    Enter Age:
+    <input th:type="number" th:name="age">
+    <button th:type="sumbit" id="form">Submit</button>
+</form>
+</body>
+</html>
+
+
+

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax Call</title>
+    <script
+            src="http://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous"></script>
+    <script th:src="@{javascript/ServerTime.js}"></script>
+</head>
+<body>
+<header th:replace="Header.html :: header(${employee})"></header>
+<button id="serverTime" th:name="server">Get Server Time</button>
+<th:ul id="server"></th:ul>
+<footer th:include="Footer::copy"></footer>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>EmployeeTable</title>
+</head>
+<style>
+    .odd
+    {
+        background: aqua;
+    }
+</style>
+<body>
+<H1> Question 8:Create a user listing table show alternate row color using a conditional tag.</H1>
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Age</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="result,iterStat:${EmployeeList}" th:classappend="${iterStat.odd}? 'odd'">
+        <td th:text="${result.name}"></td>
+        <td th:text="${result.email}"></td>
+        <td th:text="${result.age}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
